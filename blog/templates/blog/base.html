@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Mi Blog{% endblock %}</title>
+
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        header { background: #333; color: white; padding: 10px; }
+        nav a { color: white; margin-right: 15px; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mi Blog</h1>
+        <nav>
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'about' %}">About</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+</body>
+</html>

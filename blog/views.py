@@ -2,16 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 
-# Create your views here.
 def inicio(request):
-    return HttpResponse(
-                        '<h1>Hola, Bienvenido a mi primer Blog</h1>'
-                        '<a href="templates/blog/lista_posts.html">Lista de Posts</a>'
-)
+    mensaje = "Bienvenido a mi blog usando Django"
+    numero = 10 
+    post = Post.objects.all()
+
+    contexto = {
+        "mensaje" : mensaje,
+        "numero" : numero,
+        "posts" : post,
+    }
+    return render(request, "blog/index.html",contexto)
 
 def about(request):
-    return HttpResponse("<h2>About</h2>")
-
-def lista_posts(request):
-    posts = Post.objects.all().order_by('-fecha_creacion')
-    return render(request,"blog/lista_posts.html"   ,{"posts":posts})
+    return render(request, "blog/about.html")

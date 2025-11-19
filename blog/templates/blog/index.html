@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block titulo %}Lista de posts{% endblock %}
+
+{% block contenido %}
+<h2>Posts recientes</h2>
+
+<ul>
+    {% for post in posts %}
+        <li>
+            <strong>{{ post.titulo }}</strong> — {{ post.fecha_creacion }}
+        </li>
+    {% empty %}
+        <p>No hay posts disponibles.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
